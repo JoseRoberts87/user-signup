@@ -20,6 +20,11 @@ import re
 def build_page(error_username='', error_password='',
                 error_verify='', error_email='',
                  username='', email=''):
+    stylecss = """
+    <style type='text/css'>
+        #error {color: red}
+    </style>
+    """
     usr_name_label = "<td><lable>UserName</lable></td>"
     pwd_label = "<td><lable>Password</lable></td>"
     ver_pwd_lable = "<td><lable>Verify Password</lable></td>"
@@ -30,16 +35,16 @@ def build_page(error_username='', error_password='',
     ver_pwd_inp = "<td><input name='verify' type='password' required></td>"
     email_inp = "<td><input name='email' type='text' value='" + email + "'></td>"
 
-    error_username = "<td class='error_username'>" + error_username + "</td>" 
-    error_password = "<td class='error_password'>" + error_password + "</td>" 
-    error_verify = "<td class='error_verify'>" + error_verify + "</td>" 
-    error_email = "<td class='error_email'>" + error_email + "</td>" 
+    error_username = "<td id='error'>" + error_username + "</td>" 
+    error_password = "<td id='error'>" + error_password + "</td>" 
+    error_verify = "<td id='error'>" + error_verify + "</td>" 
+    error_email = "<td id='error'>" + error_email + "</td>" 
     
     sub_btn = "<input type='submit'>"
     head = "<h1>Signup!</h1>"
     br = "<br>"
 
-    form = head + ("<form action='/welcome' method='post'> <table> <tr>" + 
+    form = head + stylecss + ("<form action='/welcome' method='post'> <table> <tr>" + 
         usr_name_label + usr_name_inp + error_username + "</tr>" + 
         "<tr>" +pwd_label + pwd_inp + error_password + "</tr> <tr>" + 
         ver_pwd_lable + ver_pwd_inp + error_verify + "</tr>" + 
